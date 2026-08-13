@@ -1,5 +1,4 @@
 #include <cstring>
-#include <vector>
 #include <fstream>
 #include <fcntl.h>
 #include <sys/ioctl.h>
@@ -139,7 +138,7 @@ int main(int argc, char *argv[]) {
                 case NVKMS_CONNECTOR_TYPE_DSI:   printf("DSI "); break;
                 default: break;
             }
-            printf(") • ");
+            printf(") ");
 
             // Make the request to set attribute for this monitor
             NvKmsSetDpyAttributeParams setDpyAttr;
@@ -164,7 +163,7 @@ int main(int argc, char *argv[]) {
                 printf("Unknown attribute '%s' to set\n", ATTRIBUTE);
                 continue;
             }
-            printf("Set %s (%5lld) • ", ATTRIBUTE, setDpyAttr.request.value);
+            printf("Set %s (%lld): ", ATTRIBUTE, setDpyAttr.request.value);
 
             // Can't set attributes on disconnected outputs
             if (!dynamicData.reply.connected) {
